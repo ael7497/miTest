@@ -1,0 +1,1 @@
+get_by_id = '''SELECT * FROM intellect WHERE id=?'''
