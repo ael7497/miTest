@@ -14,10 +14,10 @@ def index():
 @app.route('/test')
 def test():
     data = do(get_by_id, [session['statement_id']])
-    if data:
-        session['statement_id'] += 1
-        return data[0][1]
-    return redirect('/result')
+    session['statement_id'] += 1
+    if not data:
+        return redirect('/result')
+    return data[0][1]
 
 @app.route('/result')
 def result():
