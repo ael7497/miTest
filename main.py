@@ -9,11 +9,23 @@ app.config['SECRET_KEY'] = settings.key
 @app.route('/')
 def index():
     session['statement_id'] = 1
+    session['intellect'] = [
+        [0, 'logical'],
+        [0, 'inner'],
+        [0, 'bodily'],
+        [0, 'verbal'],
+        [0, 'musical'],
+        [0, 'imaginative'],
+        [0, 'philosophical'],
+        [0, 'social']
+    ]
     return '<h2>index</h2>'
 
 @app.route('/test')
 def test():
     data = do(get_by_id, [session['statement_id']])
+    intellect = data[0][2]
+    #получить points из формы 
     session['statement_id'] += 1
     if not data:
         return redirect('/result')
