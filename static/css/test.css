@@ -10,7 +10,8 @@ body {
 }
 .question {
     font-size: 3rem;
-    margin-bottom: 20px;
+    margin-bottom: 1rem;
+    text-align: center;
 }
 .answers {
     display: flex;
