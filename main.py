@@ -54,7 +54,7 @@ def next():
     db.connect()
     data = db.get(get_by_id, [session["statementID"]])
     db.disconnect()
-    
+
     if not data:
         return redirect("/result")
     intellect = data[0][2]
@@ -72,7 +72,7 @@ def next():
 def result():
     session['statementID'] = 1
     
-    return '<h2>result</h2>'+str(session["intellectScores"])
+    return render_template("result.html",labels=list(session["intellectScores"].keys()),data =list(session["intellectScores"].values()))
 
 if __name__ == '__main__':
     app.run(debug=True)
