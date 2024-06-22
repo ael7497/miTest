@@ -1,6 +1,6 @@
 from flask import Flask, redirect, session, send_from_directory,render_template,request
 from db.scripts import do,DBWrapper
-from db.queries import get_by_id
+from db.queries import get_by_id,get_question_amount
 from utils.settings import settings
 
 app = Flask(__name__)
@@ -26,13 +26,16 @@ def index():
 @app.route('/test')
 def test():
     data = do(get_by_id, [session["statementID"]])
+    db.connect()
+    questionAmount = len(db.get(get_question_amount))-1 # у мекя 0 идей почему, но оно выдает [(0,), (0,), (0,) ... (0,)] 45 раз
+    print(questionAmount)
+    db.disconnect()
     #получить points из формы 
     if not data:
         return redirect('/result')
     question = data[0][1]
 
-
-    return render_template("test.html",question=question,statementID=session["statementID"])
+    return render_template("test.html",question=question,statementID=session["statementID"],percent=int(((session["statementID"]-1)/questionAmount)*100))
 
 
 
@@ -59,11 +62,9 @@ def next():
         return redirect("/result")
     intellect = data[0][2]
     session["intellectScores"][intellect] += answer
-
-    session["last"] = {"intellect":intellect,"answer":answer}
-
     if session["intellectScores"][intellect] < 0: session["intellectScores"][intellect] = 0
 
+    session["last"] = {"intellect":intellect,"answer":answer}
     session["statementID"] += 1
     return redirect("/test")
     
