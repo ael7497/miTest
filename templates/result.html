@@ -6,7 +6,7 @@
 {% endblock %}
 {% block content %}
     <h1>Результаты теста:</h1>
-  {% if true %}
+  {% if (1 =< len(intellects) =< 3 ) %}
   {% set intconjugation = "Ваш Тип " if len(intellects) < 2 else "Ваши типы " %}
   {% set perconjugation = "Ваш Тип " if len(personalities) < 2 else "Ваши типы " %}
   

@@ -26,10 +26,10 @@ def index():
     }
 
     session["personalityScores"] = {
-        "учитель":0,
-        "воин":0,
-        "торговец":0,
-        "мастер":0
+        "Учитель":0,
+        "Воин":0,
+        "Торговец":0,
+        "Мастер":0
     }
 
     return send_from_directory("./static/html/","main.html")
