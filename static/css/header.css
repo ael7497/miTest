@@ -1,0 +1,76 @@
+@media screen and (min-width: 1440px) {
+    .mobiusLink {
+        display: block !important;
+    }    
+}
+
+.mobiusLink {
+    text-decoration: none;
+    color:black;
+    font-size: 16px;
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+    font-family: 'Mulish', Arial, sans-serif;
+    line-height: 1.55;
+    font-weight: 400;
+    display: none;
+}
+.brand {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    vertical-align: middle;
+    align-items: center;
+    margin:1rem auto;
+}
+nav {
+    display: flex;
+    flex-direction: row;
+    gap: 3rem;
+}
+hr {
+    opacity: 0.8;
+    background-color: #20004b;
+}
+.mobiusLink:hover {
+    color: #ad26ff;
+}
+.logo {
+    width: 17%;
+    height: 17%;
+    min-width: 10rem;
+}
+
+body {
+    font-family: "Mulish", sans-serif;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    margin: 1rem 1rem;
+    color:#20004b;
+
+
+}
+@media screen and (min-width: 1000px) {
+    body{
+        margin: 1rem 20%;
+        
+    }
+
+}
+
+span {
+    background-color: #ffde00;
+    border-radius: 0.5rem;
+    padding: 0.25rem;
+    transition: 0.2s;
+    height: max-content;
+
+}
+
+span[class*="hoverable"]:hover {
+    background-color: #ad26ff;
+    cursor: pointer;
+    color: #fff;
+}

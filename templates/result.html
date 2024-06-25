@@ -1,15 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./static/css/result.css">
-    <link rel="shortcut icon" href="static/img/favicon.svg" type="image/svg">
-    <title>Подбор профессии по типу личности</title>
-</head>
-<body>
+{% extends 'base.html' %}
+  
+{% block head %}
+  <link rel="stylesheet" href="./static/css/result.css">
+
+{% endblock %}
+{% block content %}
     <h1>Результаты теста:</h1>
-  {% if (1 <= len(intellects) <= 3) and (1 <= len(personalities) <= 2) %}
+  {% if true %}
   {% set intconjugation = "Ваш Тип " if len(intellects) < 2 else "Ваши типы " %}
   {% set perconjugation = "Ваш Тип " if len(personalities) < 2 else "Ваши типы " %}
   
@@ -39,11 +36,11 @@
     <canvas class="resultChart_persona"></canvas>
     </div>
     <!-- <div class="intellectSummary">{{intellectSummary}}</div> -->
-  </div>
+  </div>  
 
 
       <div class="professions">
-        <div>Профессии которые могут вам подойти:</div>
+        <h1>Профессии которые могут вам <span>подойти</span>:</h1>
           
         <ul>
             {% for profession in prof_list %}
@@ -123,5 +120,4 @@
     }
   });
 </script>
-</body>
-</html>
+{% endblock %}

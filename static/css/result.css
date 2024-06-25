@@ -1,43 +1,3 @@
-body {
-    font-family: "Mulish", sans-serif;
-    background-color: #fff;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: start;
-    margin: 1rem 1rem;
-    color:#20004b;
-
-
-}
-@media screen and (min-width: 600px) {
-    body{
-        margin: 1rem 20%;
-    }
-}
-
-
-
-
-
-span {
-    background-color: #ffde00;
-    border-radius: 0.5rem;
-    padding: 0.25rem;
-    transition: 0.2s;
-    height: max-content;
-
-}
-
-span[class*="hoverable"]:hover {
-    background-color: #ad26ff;
-    cursor: pointer;
-}
-
-.logo {
-    display: flex;
-    width: 500px;
-}
 .metric {
     display: flex;
     gap:1rem;
@@ -46,6 +6,9 @@ span[class*="hoverable"]:hover {
     align-content: space-between;
 
     
+}
+.professions {
+    align-self: flex-start;
 }
 .mainIntellect, .mainPersonality {
     display: flex;
@@ -72,4 +35,22 @@ h1 {
 .metricWrapper {
     align-content: space-between;
     flex-wrap: wrap;
+}
+.toMain {
+    background-color: #ffde00;
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+    color: #20004b;
+    text-decoration: none;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    margin-top: 2rem;
+}
+.toMain:hover {
+    background-color: #ad26ff;
+    color:#fff;
+
+}
+
+span[class*="hoverable"]{
+    font-weight: 700;
 }

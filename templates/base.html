@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./static/css/header.css">
+    <link rel="shortcut icon" href="static/img/favicon.svg" type="image/svg">
+    <title>Мобиус Класс — образовательные центры для школьников</title>
+    {% block head %} {% endblock %}
+  </head>
+  <body>
+    {% block header %}
+    <header>
+        <div class="brand">
+          <a href="https://mobiusclass.ru" class="logo">
+            <img src="static/img/logo.png" width="100%" height="100%" alt="">
+          </a>
+          <div class="brandSNS">
+            <a href="https://t.me/mobiusclass_m"><img src="https://static.tildacdn.com/tild3062-6161-4265-a331-623566623564/Subtract.svg" alt=""></a>
+            <a href="https://vk.com/mobiusclass"><img src="https://static.tildacdn.com/tild6136-6630-4939-b562-303537353236/VK.svg" alt=""></a>
+          </div>
+        </div>
+        <hr>
+        <nav>
+          <a href="https://mobiusclass.ru/liceum" class="mobiusLink">Лицей 9/11</a>
+          <a href="https://mobiusclass.ru/ege" class="mobiusLink">ЕГЭ</a>
+          <a href="https://mobiusclass.ru/oge" class="mobiusLink">ОГЭ</a>
+          <a href="https://mobiusclass.ru/shkolnyepredmety" class="mobiusLink">Школьные предметы</a>
+          <a href="https://mobiusclass.ru/prof" class="mobiusLink">Профориентация</a>
+          <a href="https://mobiusclass.ru/#contacts" class="mobiusLink">Контакты</a>
+          <a href="https://fr.mobiusclass.ru" class="mobiusLink">Франшиза</a>
+        </nav>
+        </div>
+      </header>
+    {% endblock %}
+    {% block content %}{% endblock %}
+      <footer>
+
+      </footer>
+  </body>
+</html>
