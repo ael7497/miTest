@@ -2,7 +2,6 @@ from flask import Flask, redirect, session, send_from_directory,render_template,
 from db.scripts import DBWrapper
 from db.queries import get_by_id, get_question_amount
 from utils.settings import settings
-from professions.professions import professions
 from professions.get_profession_list import get_prof_list
 
 app = Flask(__name__)
@@ -40,7 +39,7 @@ def index():
 def test():
     data = db.get(get_by_id, [session["statementID"]])
     
-    questionAmount = len(db.get(get_question_amount))-1 # у мекя 0 идей почему, но оно выдает [(0,), (0,), (0,) ... (0,)] 45 раз
+    questionAmount = db.get(get_question_amount)[0][0] # у мекя 0 идей почему, но оно выдает [(0,), (0,), (0,) ... (0,)] 45 раз
     print(questionAmount)
 
     if not data:
@@ -48,21 +47,17 @@ def test():
     question = data[0][1]
 
 
-    return render_template("test.html",question=question,statementID=session["statementID"],percent=int(((session["statementID"]-1)/questionAmount)*100))
+    return render_template("test.html",question=question,statementID=session["statementID"],percent=int(((session["statementID"]-1)/questionAmount)*100) if session["statementID"] > 1 else 0)
 
 
 @app.route("/back")
 def back():
     if session["statementID"] < 1: return
-    intellect = session["last"]["intellect"]
+    session["intellectScores"][session["last"]["intellect"]] -= session["last"]["answer"]
     personality = session["last"]["personality"]
-
-    session["intellectScores"][intellect] -= session["last"]["answer"]
-    if session["intellectScores"][intellect] < 0: session["intellectScores"][intellect] = 0
-    
     if personality:
         session["personalityScores"][personality] -= session["last"]["answer"]
-        if session["personalityScores"][personality] < 0: session["personalityScores"][personality] = 0
+
     session["statementID"] -= 1
     return redirect("/test")
 
@@ -79,11 +74,8 @@ def next():
     personality = data[0][3]
 
     session["intellectScores"][intellect] += answer
-    if session["intellectScores"][intellect] < 0: session["intellectScores"][intellect] = 0
-    
-    if personality: 
+    if personality:
         session["personalityScores"][personality] += answer
-        if session["personalityScores"][personality] < 0: session["personalityScores"][personality] = 0
 
     session["last"] = {"intellect":intellect, "personality":personality, "answer":answer}
 
@@ -94,11 +86,21 @@ def next():
 
 @app.route('/result')
 def result():
-    intellect = max(session["intellectScores"], key=session["intellectScores"].get)
-    personality = max(session["personalityScores"], key=session["personalityScores"].get)
-    prof_list = get_prof_list(professions[intellect], professions[personality])
-    print(prof_list)
-    return render_template("result.html",labels=list(session["intellectScores"].keys()),data =list(session["intellectScores"].values()))
+    intellects = [name for name in session["intellectScores"] if session["intellectScores"][name] >= 5]
+    personalities = [name for name in session["personalityScores"] if session["personalityScores"][name] >= 2]
+
+    for name in session["intellectScores"]: session["intellectScores"][name] = max(0,session["intellectScores"][name])
+    for name in session["personalityScores"]: session["personalityScores"][name] = max(0,session["personalityScores"][name])
+
+    prof_list = get_prof_list(intellects, personalities)
+
+    return render_template("result.html",
+        intellectScores=session["intellectScores"],
+        personalityScores=session["personalityScores"],
+        intellects=intellects,
+        personalities=personalities,
+        prof_list = prof_list,
+        list=list,len=len)
 
 if __name__ == '__main__':
     app.run(debug=True)

@@ -8,23 +8,63 @@
     <title>Подбор профессии по типу личности</title>
 </head>
 <body>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <h1>Результаты теста:</h1>
-    <div class="chartWrapper">
-        <canvas class="resultChart_intell"></canvas>
+  {% if (1 <= len(intellects) <= 3) and (1 <= len(personalities) <= 2) %}
+  {% set intconjugation = "Ваш Тип " if len(intellect) < 2 else "Ваши типы " %}
+  {% set perconjugation = "Ваш Тип " if len(personalities) < 2 else "Ваши типы " %}
+  <div class="metric">
+    <h1>{{intconjugation}}<span>интеллекта</span>:</h1> 
+    <div class="mainIntellect">
+      <div class="intellects">
+      {% for intellect in intellects %}
+        <span class="intellect hoverable">{{intellect}} </span>
+      {% endfor %}
+      </div>
+
+      <canvas class="resultChart_intell"></canvas>
     </div>
-    <div class="chartWrapper">
-      <canvas class="resultChart_persona"></canvas>
+    
+    <!-- <div class="intellectSummary">{{intellectSummary}}</div> -->
+  </div>        
+  <div class="metric">
+    <h1>{{perconjugation}}<span>личности</span>:</h1> 
+    <div class="mainPersonality">
+      <div class="personalities">
+      {% for personality in personalities %}
+        <span class="personality hoverable">{{personality}} </span>
+      {% endfor %}
+      
+    </div>
+    <canvas class="resultChart_persona"></canvas>
+    </div>
+    <!-- <div class="intellectSummary">{{intellectSummary}}</div> -->
   </div>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+      <div class="professions">
+        <div>Профессии которые могут вам подойти:</div>
+          
+        <ul>
+            {% for profession in prof_list %}
+              <li>{{profession}}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% else %}  
+      <div class="testFailed">Простите, но мы не смогли предположить какой у вас тип интеллекта и личности, обратитесь к психологу за более точным определением</div>
+  {% endif %}
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
+  
+
+
   const ctx_intell = document.getElementsByClassName('resultChart_intell')[0];
-  new Chart(ctx_intell, {
+  let chart = new Chart(ctx_intell, {
     type: 'polarArea',
     data: {
-      labels: {{labels|safe}},
+      labels: {{list(intellectScores.keys())|safe}},
       datasets: [{
-        data: {{data}},
+        data: {{list(intellectScores.values())|safe}},
         borderWidth: 5,
         backgroundColor: [
             "#ad26ff",
@@ -39,21 +79,27 @@
         ]
       }]
     },
+
     options: {
       scales: {
         y: {
+          ticks: {
+            display:false
+          },
           beginAtZero: true
         }
       }
     }
   });
+  Chart.overrides.polarArea.plugins.legend.display = false;
+
   const ctx_persona = document.getElementsByClassName('resultChart_persona')[0];
   new Chart(ctx_persona, {
     type: 'polarArea',
     data: {
-      labels: {{labels|safe}},
+      labels: {{list(personalityScores.keys())|safe}},
       datasets: [{
-        data: {{data}},
+        data: {{list(personalityScores.values())|safe}},
         borderWidth: 5,
         backgroundColor: [
             "#ad26ff",
@@ -66,6 +112,9 @@
     options: {
       scales: {
         y: {
+          ticks: {
+            display:false
+          },
           beginAtZero: true
         }
       }

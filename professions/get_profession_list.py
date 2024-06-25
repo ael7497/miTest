@@ -1,7 +1,7 @@
-def get_prof_list(intellect_list, personality_list) -> list:
-    prof_list = []
-    for pprof in personality_list:
-        for iprof in intellect_list: 
-            if pprof in iprof:
-                prof_list.append(iprof)
-    return prof_list
+from professions.professions import professions
+def get_prof_list(intellects, personalities) -> list:
+    intellectProfList = []
+    personalityProfList = []
+    [intellectProfList.extend(professions[intellect]) for intellect in intellects]
+    [personalityProfList.extend(professions[personality]) for personality in personalities]
+    return list(set(intellectProfList).intersection(personalityProfList))

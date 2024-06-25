@@ -1,19 +1,75 @@
-.chartWrapper {
-    width: 100vw;
-    height: 30rem;
-    align-items: center;
-    flex-direction: column;
+body {
+    font-family: "Mulish", sans-serif;
+    background-color: #fff;
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    margin: 1rem 1rem;
+    color:#20004b;
+
+
+}
+@media screen and (min-width: 600px) {
+    body{
+        margin: 1rem 20%;
+    }
 }
 
-h1 {
-    color: #20004b;
-    font-size: 20px;
-    font-family: 'Mulish', Arial, sans-serif;
-    text-align: center;
+
+
+
+
+span {
+    background-color: #ffde00;
+    border-radius: 0.5rem;
+    padding: 0.25rem;
+    transition: 0.2s;
+    height: max-content;
+
+}
+
+span[class*="hoverable"]:hover {
+    background-color: #ad26ff;
+    cursor: pointer;
 }
 
 .logo {
     display: flex;
     width: 500px;
+}
+.metric {
+    display: flex;
+    gap:1rem;
+    flex-direction: column;
+    width: 100%;
+    align-content: space-between;
+
+    
+}
+.mainIntellect, .mainPersonality {
+    display: flex;
+    flex-direction: row;
+    max-height: 20rem;
+    flex-wrap: wrap;
+    justify-content: space-between
+
+}
+h1 {
+    font-size: 40px;
+    font-weight: 900;
+    text-align: left;
+}
+
+.intellect, .personality{
+    font-size: 25px;
+}
+.intellects, .personalities {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
+.metricWrapper {
+    align-content: space-between;
+    flex-wrap: wrap;
 }
