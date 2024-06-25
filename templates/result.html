@@ -10,8 +10,9 @@
 <body>
     <h1>Результаты теста:</h1>
   {% if (1 <= len(intellects) <= 3) and (1 <= len(personalities) <= 2) %}
-  {% set intconjugation = "Ваш Тип " if len(intellect) < 2 else "Ваши типы " %}
+  {% set intconjugation = "Ваш Тип " if len(intellects) < 2 else "Ваши типы " %}
   {% set perconjugation = "Ваш Тип " if len(personalities) < 2 else "Ваши типы " %}
+  
   <div class="metric">
     <h1>{{intconjugation}}<span>интеллекта</span>:</h1> 
     <div class="mainIntellect">
@@ -51,8 +52,9 @@
         </ul>
     </div>
     {% else %}  
-      <div class="testFailed">Простите, но мы не смогли предположить какой у вас тип интеллекта и личности, обратитесь к психологу за более точным определением</div>
-  {% endif %}
+    <div class="testFailed">Простите, но мы не смогли предположить какой у вас тип интеллекта и личности, обратитесь к психологу за более точным определением</div>
+{% endif %}
+    <a href="/" class="toMain">На главную</a>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
   
