@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block head %}
+    <link href="static/css/main.css" rel="stylesheet" />
+{% endblock %}
+{% block content %}
+    <div class="contentWrapper">
+        <div class="leftSideWrapper">
+            <h1>Узнай <span>подходящие</span> тебе <span>профессии</span></h1>
+
+            <div class="instructions">
+                <strong>1</strong>. Пройди тест который состоит из 45 вопросов</h3><br>
+                <strong>2</strong>. Узнай подходящие профессии для тебя</h3>
+            </div>
+
+            <a href="/test" class="startTest">Начать тест</a>
+        </div>
+        <div class="card">
+            <h1>Что такое тип <span>интеллекта</span>?</h1>
+            <hr/>
+            <p>Существует 9 видов интеллекта, не зависящих один от другого и действующих каждый по своим правилам. Именно множественный характер интеллекта позволяет людям принимать такие различные роли, как роль врача, музыканта, водителя и певца.</p>
+        </div>  
+    </div>
+{% endblock %}

@@ -1,7 +1,12 @@
-@media screen and (min-width: 1440px) {
-    .mobiusLink {
-        display: block !important;
-    }    
+@import url('https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap');
+
+@media screen and (max-width:700px) {
+    .brand{
+        margin-top: 0px !important;
+    }
+    .mobiusLink{
+        display: none;
+    }
 }
 
 .mobiusLink {
@@ -9,10 +14,7 @@
     color:black;
     font-size: 16px;
     transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, border-color 0.2s ease-in-out;
-    font-family: 'Mulish', Arial, sans-serif;
-    line-height: 1.55;
     font-weight: 400;
-    display: none;
 }
 .brand {
     display: flex;
@@ -20,23 +22,26 @@
     flex-direction: row;
     vertical-align: middle;
     align-items: center;
-    margin:1rem auto;
+    margin:0.9rem auto;
+    margin-top: 1rem !important;
 }
 nav {
     display: flex;
     flex-direction: row;
-    gap: 3rem;
+    gap: 3.1rem;
 }
-hr {
+.separator {
     opacity: 0.8;
     background-color: #20004b;
+    height: 1px;
+    margin: 0.9rem 0.30rem;
 }
 .mobiusLink:hover {
     color: #ad26ff;
 }
 .logo {
-    width: 17%;
-    height: 17%;
+    width: 16%;
+    height: 16%;
     min-width: 10rem;
 }
 
@@ -48,13 +53,14 @@ body {
     align-items: center;
     justify-content: start;
     margin: 1rem 1rem;
+    margin-top: 1.3rem ;
     color:#20004b;
 
 
 }
 @media screen and (min-width: 1000px) {
     body{
-        margin: 1rem 20%;
+        margin: 1rem 19.5%;
         
     }
 
@@ -62,10 +68,10 @@ body {
 
 span {
     background-color: #ffde00;
-    border-radius: 0.5rem;
-    padding: 0.25rem;
+    border-radius: 1rem;
+    padding: 0 0.25rem;
     transition: 0.2s;
-    height: max-content;
+    color: #20004b;
 
 }
 
@@ -73,4 +79,20 @@ span[class*="hoverable"]:hover {
     background-color: #ad26ff;
     cursor: pointer;
     color: #fff;
+}
+
+footer {
+    display: flex;
+    color: #fff;
+    flex-direction: row;
+    background-image: url("https://static.tildacdn.com/tild3562-6634-4263-b866-656231616432/footer.png");
+    background-position: 0.000% 71.666%;
+    background-size: 100.000%;
+    position: fixed;
+    bottom: 0;
+    padding-bottom: 2rem;
+    padding-top: 1rem;
+    border-radius: 1rem;
+    margin: auto 1rem;
+    justify-content: center;
 }

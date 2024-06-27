@@ -32,7 +32,7 @@ def index():
         "Мастер":0
     }
 
-    return send_from_directory("./static/html/","main.html")
+    return render_template("main.html")
 
 
 @app.route('/test')

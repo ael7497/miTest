@@ -5,8 +5,7 @@
 
 {% endblock %}
 {% block content %}
-    <h1>Результаты теста:</h1>
-  {% if (1 =< len(intellects) =< 3 ) %}
+  {% if (1 <= len(intellects) <= 3 ) and (1 <= len(personalities) <= 3) %}
   {% set intconjugation = "Ваш Тип " if len(intellects) < 2 else "Ваши типы " %}
   {% set perconjugation = "Ваш Тип " if len(personalities) < 2 else "Ваши типы " %}
   
@@ -42,11 +41,11 @@
       <div class="professions">
         <h1>Профессии которые могут вам <span>подойти</span>:</h1>
           
-        <ul>
+        <p>
             {% for profession in prof_list %}
-              <li>{{profession}}</li>
+              <span class="profession">{{profession}}</span>
             {% endfor %}
-        </ul>
+        </p>
     </div>
     {% else %}  
     <div class="testFailed">Простите, но мы не смогли предположить какой у вас тип интеллекта и личности, обратитесь к психологу за более точным определением</div>

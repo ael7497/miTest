@@ -4,15 +4,7 @@
     <link rel="stylesheet" href="./static/css/test.css">
 {% endblock %}
 
-{% block header %}
-<header>
-<div class="brand">
-    <a href="https://mobiusclass.ru" class="logo">
-      <img src="static/img/logo.png" width="100%" height="100%" alt="">
-    </a>
-</div>
-  <hr>
-</header>
+{% block links %}
 {% endblock %}
 
 {% block content%}
@@ -20,9 +12,15 @@
     <div class="header">
         {% if statementID > 1 %}
             <a class="back" href="/back">
+        {% else %}
+            <a class="back" href="/">
+        {% endif %}
                 <img class="backIcon" src="../static/img/back.svg" alt="">
             </a>
-        {% endif %}
+        
+        
+        
+
         <div class="progressBar"><div class="fill" style="width:{{percent}}%;"></div></div>
         <div class="percent">{{percent}}%</div>
     </div>
