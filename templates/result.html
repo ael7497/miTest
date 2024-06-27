@@ -6,34 +6,39 @@
 {% endblock %}
 {% block content %}
   {% if (1 <= len(intellects) <= 3 ) and (1 <= len(personalities) <= 3) %}
-  {% set intconjugation = "Ваш Тип " if len(intellects) < 2 else "Ваши типы " %}
-  {% set perconjugation = "Ваш Тип " if len(personalities) < 2 else "Ваши типы " %}
+  {% set intconjugation = "Ваш тип " if len(intellects) < 2 else "Ваши типы " %}
+  {% set perconjugation = "Ваш тип " if len(personalities) < 2 else "Ваши типы " %}
   
   <div class="metric">
-    <h1>{{intconjugation}}<span>интеллекта</span>:</h1> 
+    
     <div class="mainIntellect">
+      <h1>{{intconjugation}}<span>интеллекта</span>:</h1>
       <div class="intellects">
       {% for intellect in intellects %}
         <span class="intellect hoverable">{{intellect}} </span>
       {% endfor %}
       </div>
-
-      <canvas class="resultChart_intell"></canvas>
+      <div class="card intellect"></div>
     </div>
+    <div class="chartWrapper"><canvas class="resultChart_intell"></canvas></div>
     
     <!-- <div class="intellectSummary">{{intellectSummary}}</div> -->
   </div>        
   <div class="metric">
-    <h1>{{perconjugation}}<span>личности</span>:</h1> 
+    
     <div class="mainPersonality">
+      <h1>{{perconjugation}}<span>личности</span>:</h1> 
       <div class="personalities">
       {% for personality in personalities %}
         <span class="personality hoverable">{{personality}} </span>
       {% endfor %}
+
       
     </div>
-    <canvas class="resultChart_persona"></canvas>
+    <div class="card personality"></div>
+    
     </div>
+    <div class="chartWrapper"><canvas class="resultChart_persona"></canvas></div>
     <!-- <div class="intellectSummary">{{intellectSummary}}</div> -->
   </div>  
 
@@ -52,10 +57,11 @@
 {% endif %}
     <a href="/" class="toMain">На главную</a>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  
 <script>
   
 
-
+  Chart.overrides.polarArea.plugins.legend.display = false;
   const ctx_intell = document.getElementsByClassName('resultChart_intell')[0];
   let chart = new Chart(ctx_intell, {
     type: 'polarArea',
@@ -89,7 +95,7 @@
       }
     }
   });
-  Chart.overrides.polarArea.plugins.legend.display = false;
+  
 
   const ctx_persona = document.getElementsByClassName('resultChart_persona')[0];
   new Chart(ctx_persona, {
@@ -118,5 +124,7 @@
       }
     }
   });
+  let summaries = {{summaries|safe}};
 </script>
+<script src="./static/js/result.js"></script>
 {% endblock %}

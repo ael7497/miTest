@@ -3,7 +3,7 @@ from db.scripts import DBWrapper
 from db.queries import get_by_id, get_question_amount
 from utils.settings import settings
 from professions.get_profession_list import get_prof_list
-
+from summaries.summaries import summaries
 app = Flask(__name__)
 app.config['SECRET_KEY'] = settings.key
 db = DBWrapper(settings.DBName)
@@ -100,6 +100,7 @@ def result():
         intellects=intellects,
         personalities=personalities,
         prof_list = prof_list,
+        summaries=summaries,
         list=list,len=len)
 
 if __name__ == '__main__':
