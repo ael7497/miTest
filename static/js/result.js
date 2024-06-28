@@ -11,7 +11,10 @@ function setCard(card,element) {
 
 const summarizable = [...document.querySelectorAll(".hoverable")];
 summarizable.forEach((element)=>{
-    card = element.classList.contains("intellect") ? intellectCard : personalityCard;
+    console.log(element)
+    let card = element.classList.contains("intellect") ? intellectCard : personalityCard;
+    console.log(element.classList.contains("intellect") ? intellectCard : personalityCard)
+    console.log(card)
     element.addEventListener("click",()=>{
         setCard(card,element);
 
