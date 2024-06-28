@@ -1,23 +1,29 @@
-{% extends 'base.html' %}
-{% block head %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="static/img/favicon.svg" type="image/svg">
+    <title>Подбор профессии по типу личности</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="static/css/main.css" rel="stylesheet" />
-{% endblock %}
-{% block content %}
-    <div class="contentWrapper">
-        <div class="leftSideWrapper">
-            <h1>Узнай <span>подходящие</span> тебе <span>профессии</span></h1>
+</head>
 
-            <div class="instructions">
-                <strong>1</strong>. Пройди тест который состоит из 45 вопросов</h3><br>
-                <strong>2</strong>. Узнай подходящие профессии для тебя</h3>
-            </div>
-
-            <a href="/test" class="startTest">Начать тест</a>
-        </div>
-        <div class="card">
-            <h1>Что такое тип <span>интеллекта</span>?</h1>
-            <hr/>
-            <p>Существует 9 видов интеллекта, не зависящих один от другого и действующих каждый по своим правилам. Именно множественный характер интеллекта позволяет людям принимать такие различные роли, как роль врача, музыканта, водителя и певца.</p>
-        </div>  
+<body>
+    <div class="logo"><a class="logo_a" href="https://mobiusclass.ru/"><img class="logo_img" src="./static\img\logo.png"></a></div>
+    <div class="start_h1">
+        <h1>Привет, хочешь узнать свою <span>будущую</span> <span>профессию</span> и <span>тип</span> <span>личности</span>? Тебе
+            сюда.</h1>
     </div>
-{% endblock %}
+    <div class="intelect">
+        <h2>Что такое тип интеллекта?</p>
+        <p>Существует 9 видов интеллекта, не зависящих один от другого и действующих каждый по своим правилам. Именно множественный характер интеллекта позволяет людям принимать такие различные роли, как роль врача, музыканта, водителя и певца.</p>
+    </div>
+    <div>
+        <h3><span class="number">1</span> Пройди тест который состоит из 45 вопросов</h3>
+        <h3><span class="number">2</span> Узнаю свою профессию и тип личности</h3>
+    </div>    
+    <a href="/test" class="test">Начать тест</a>
+</body>
+</html>
