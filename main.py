@@ -86,8 +86,8 @@ def next():
 
 @app.route('/result')
 def result():
-    intellects = [name for name in session["intellectScores"] if session["intellectScores"][name] >= 8]
-    personalities = [name for name in session["personalityScores"] if session["personalityScores"][name] >= 8]
+    intellects = [name for name in session["intellectScores"] if session["intellectScores"][name] >= 5]
+    personalities = [name for name in session["personalityScores"] if session["personalityScores"][name] >= 5]
 
     for name in session["intellectScores"]: session["intellectScores"][name] = max(0,session["intellectScores"][name])
     for name in session["personalityScores"]: session["personalityScores"][name] = max(0,session["personalityScores"][name])
